@@ -1,0 +1,33 @@
+set nu rnu
+set incsearch
+set ignorecase
+set smartcase
+
+" Copy to system clipboard as well
+set clipboard+=unnamed
+
+" Use Idea to join lines smartly
+set ideajoin
+" New leader key
+let mapleader= " "
+
+" key bindings for quickly moving between windows
+" h left, l right, k up, j down
+nmap <leader>h <c-w>h
+nmap <leader>l <c-w>l
+nmap <leader>k <c-w>k
+nmap <leader>j <c-w>j
+
+" Terminal
+nmap <leader>T :action ActivateTerminalToolWindow<cr>
+
+" Moving lines up and down
+nnoremap <S-Up> :m-2<CR>
+nnoremap <S-Down> :m+<CR>
+inoremap <S-Up> <Esc>:m-2<CR>
+inoremap <S-Down> <Esc>:m+<CR>
+
+" Adapting for swiss keyboard
+noremap à {
+noremap $ }
+
