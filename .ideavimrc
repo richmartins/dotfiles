@@ -1,7 +1,8 @@
-set nu rnu
+" set nu rnu
 set incsearch
 set ignorecase
 set smartcase
+set scrolloff=10 " while scrolling move down 8 lines
 
 " Copy to system clipboard as well
 set clipboard+=unnamed

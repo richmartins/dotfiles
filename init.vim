@@ -1,7 +1,7 @@
-" ----------------------------------- Encoding settins -----------------------
+" Encoding settings: ---------------------------------------------------------
 scriptencoding utf8
 set encoding=utf8
-" ---------------------------------- General Settings ------------------------
+" Sets:  ----------------------------------------------------------------------
 set number      " show number of the line
 set smartindent
 set autoindent  " keeps the indent on newline
@@ -13,7 +13,7 @@ set undodir=~/.vim/undodir " set undofiles dir
 set undofile    " enable undofile (same as swapfile)
 set incsearch   " move cursor to highlighted text of research
 set cursorline
-set nu rnu      " nu => current line nb - rnu =>relative number line
+" set nu rnu      " nu => current line nb - rnu =>relative number line
 set nohlsearch  " remove highlight after searched
 set mouse=a
 set scrolloff=10 " while scrolling move down 8 lines
@@ -36,40 +36,35 @@ autocmd WinLeave * setlocal nocursorline
 " tabulation
 set tabstop=4 softtabstop=4
 set shiftwidth=4
+set expandtab
 set ai
 
-set expandtab
+" ???
 set nocompatible
 
 let mapleader = " "
 " remove trailing useless trailing spaces
 autocmd BufWritePre * :%s/\s\+$//e
 
-" --------------------------------- PLUGIN INSTAL ----------------------------
+" Plugin install: ------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
-    Plug 'arcticicestudio/nord-vim'
-    Plug 'tomasiser/vim-code-dark'
     Plug 'Yggdroot/indentLine'
-    Plug 'git@github.com:pangloss/vim-javascript.git'
-    Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'preservim/nerdcommenter'
     Plug 'git@github.com:kien/ctrlp.vim.git'
-    Plug 'tmux-plugins/vim-tmux-focus-events'
     Plug 'haya14busa/is.vim'
-    Plug 'arzg/vim-colors-xcode'
-    Plug 'ntpeters/vim-better-whitespace'
     Plug 'preservim/nerdtree'
-    " Plug 'vim-airline/vim-airline'
-    " Plug 'vim-airline/vim-airline-themes'
     Plug 'airblade/vim-gitgutter'
-    Plug 'cdelledonne/vim-cmake'
-    Plug 'plasticboy/vim-markdown'
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
     Plug 'alvan/vim-closetag'
     Plug 'mattn/emmet-vim'
+    Plug 'sainnhe/sonokai'
+    Plug 'sheerun/vim-polyglot'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'tpope/vim-fugitive'
 call plug#end()
 
-" -------------------------------PLUGIN SETTINGS -----------------------------
+" Plug settings:  ------------------------------------------------------------
 filetype plugin on
 
 " Autocompletion use <C-x><C-o> to show completion
@@ -119,18 +114,28 @@ let g:strip_whitespace_confirm = 0
 let g:ctrlp_user_command=['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_use_caching = 0
 
-" let g:Powerline_symbols = 'fancy'
-" let g:airline_powerline_fonts = 1
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline_theme='xcodedark'
-
 let g:gitgutter_enabled = 1
 let g:gitgutter_max_signs = 500
 
-" display whitespaces, tab char, eol char, etc..
-" set list lcs+=tab:>--,trail:·,eol:¬,nbsp:∙,space:·
+" vim-polyglot settings:
+let g:python_highlight_all = 1
 
-" -------------------------------- mapping -----------------------------------
+" config airline:
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#branch#enabled=1
+let g:airline_section_c=''
+let g:airline_section_x=''
+let g:airline_section_y=''
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+
+" display whitespaces, tab char, eol char, etc..
+" set list
+" lcs+=tab:>--,trail:·,eol:¬,nbsp:∙,space:·
+
+" mapping: -------------------------------------------------------------------
 " moving lines up and down
 nnoremap <S-Up> :m-2<CR>
 nnoremap <S-Down> :m+<CR>
@@ -152,8 +157,8 @@ noremap <leader>c :! /usr/local/bin/g++-10 %  -DCMAKE_CXX_FLAGS="-Wall -Wextra -
 noremap <leader>r :! ./%:r.out<CR>
 
 " " Adapting for swiss keyboard
-noremap $ {
-noremap à }
+noremap à {
+noremap $ }
 
 " omni completion remap to ctrl + space
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
@@ -163,16 +168,28 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
 imap <C-@> <C-Space>
 
-" -------------------------------- hightlighting-------------------------------
-" set t_Co=256
-" set background=dark
+" hightlighting: -------------------------------------------------------------
+" set t_Co=256 only on none 256colors terminal (iterm2 is 256 colors)
 " hi Comment ctermfg=Green
 " hi Visual cterm=reverse
+syntax enable
 
-syntax on
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set termguicolors
-colorscheme xcodedark
+if (has("nvim"))
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+
+if has('termguicolors')
+  set termguicolors
+endif
+
+" The configuration options should be placed before `colorscheme sonokai`.
+let g:sonokai_style = 'default'
+let g:sonokai_enable_italic = 1
+let g:sonokai_disable_italic_comment = 1
+colorscheme sonokai
+
+set background=dark
+
 " Always change color of column 80
 hi ColorColumn ctermbg=8
 set colorcolumn=80

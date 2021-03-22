@@ -116,6 +116,7 @@ alias tmuxa="tmux attach -t ${tmux_session:-default}"
 alias bachelor="cd $HOME/Google\ Drive/02_BACHELOR/"
 alias ginit="$HOME/bin/automate/ginit"
 alias cppinit="$HOME/bin/automate/cppinit"
+alias grep="ggrep"
 
 # Exports
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
