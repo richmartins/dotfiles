@@ -60,7 +60,7 @@ COMPLETION_WAITING_DOTS="true"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -77,67 +77,85 @@ plugins=(
     virtualenv
     man
     vim-interaction
-    # zsh-syntax-highlighting
+    zsh-syntax-highlighting
     zsh-autosuggestions
-    rbenv
     vscode
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
 export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
+export NVM_DIR="$HOME/.nvm"
+
+export DOTNET_ROOT=/usr/local/share/dotnet
+export PATH=$PATH:/usr/local/share/dotnet
+
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
-else
-    export EDITOR='nvim'
-fi
+ if [[ -n $SSH_CONNECTION ]]; then
+     export EDITOR='vim'
+ fi
 
 # [CUSTOM ALIAS]
-alias vi="nvim"
-alias vim="nvim"
-alias vimrc="nvim $HOME/.config/nvim/init.vim"
-alias dew="cd $HOME/dev/www && ll"
-alias xcode="open -a xcode"
-alias firefox="/Applications/Firefox.app/Contents/MacOS/firefox"
-alias myip="ifconfig en0"
+alias vi="vim"
 alias python="python3"
 alias pip="pip3"
-alias compress_pdf="$HOME/bin/compress_pdf.sh"
-alias gcc="/usr/local/bin/gcc-10"
 alias tmuxn="tmux new -s ${tmux_session:-default}"
 alias tmuxa="tmux attach -t ${tmux_session:-default}"
-alias bachelor="cd $HOME/Google\ Drive/02_BACHELOR/"
-alias ginit="$HOME/bin/automate/ginit"
-alias cppinit="$HOME/bin/automate/cppinit"
-alias grep="ggrep"
 
 # Exports
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
-export TERM=xterm-256color
+export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+export PATH="/Users/rtenorio/.cargo/bin:$PATH"
+export PATH="/Users/rtenorio/.cargo/bin:$PATH"
+export PATH="/opt/homebrew/Cellar/john-jumbo/1.9.0_1/bin:$PATH"
+
+export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig"
+export NVM_DIR="$HOME/.nvm"
+export HOMEBREW_GITHUB_API_TOKEN=
+export WPSCAN_API_TOKEN=
+
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+export TERM="xterm-256color"
+export GPG_TTY=$(tty)
+export LDFLAGS="-L/opt/homebrew/Cellar/unixodbc/2.3.11/lib"
+export CPPFLAGS="-I/opt/homebrew/Cellar/unixodbc/2.3.11/include"
+
+export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
 
 
-# rbenv
-eval "$(rbenv init -)"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-    else
-        export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+function virtualenv_info {
+    [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
+}
+
+eval "$(rbenv init - -zsh)"
+
+function ruby_version()
+{
+    if which rbenv 2>/dev/null >&2; then
+        local rbenv_version_name="$(rbenv version-name)"
+        local rbenv_global="$(rbenv global)"
+
+        # Don't show anything if the current Ruby is the same as the global Ruby.
+        if [[ $rbenv_version_name == $rbenv_global ]]; then
+            return
+        fi
+
+        rbenv version | sed -e "s/ (set.*$//"
     fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+}
 
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

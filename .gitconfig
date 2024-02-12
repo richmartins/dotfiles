@@ -1,0 +1,25 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = YOOOO
+	email = yoo@yoo.com
+	signingkey = thekeyssssss
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
+[commit]
+	gpgsign = true
+[gpg]
+	program = /usr/local/MacGPG2/bin/gpg2
+[submodule]
+	recurse = true
+[color]
+	ui = true
+[column]
+	ui = auto
+[branch]
+	sort = committerdate
+[maintenance]
+    auto = false
+    strategy = incremental
