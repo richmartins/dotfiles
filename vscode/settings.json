@@ -1,0 +1,95 @@
+{
+    "explorer.openEditors.visible": 0,
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.statusBar.visible": true,
+    "workbench.colorTheme": "Fleet Dark",
+    "workbench.preferredHighContrastColorTheme": "Visual Studio Light",
+    "workbench.preferredDarkColorTheme": "Visual Studio Dark",
+    "editor.renderWhitespace": "all",
+    "editor.wordWrap": "off",
+    "editor.fontLigatures": false,
+    "editor.minimap.enabled": false,
+    "editor.cursorBlinking": "solid",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.cursorSurroundingLines": 10,
+    "editor.fontFamily": "SF Mono",
+    "editor.bracketPairColorization.enabled": false,
+    "editor.rulers": [
+        80
+    ],
+    "terminal.integrated.fontSize": 13,
+    "html.format.wrapLineLength": 0,
+    "vim.useSystemClipboard": true,
+    "vim.leader": "<space>",
+    "vim.cursorStylePerMode.insert": "block",
+    "vim.cursorStylePerMode.visual": "block",
+    "vim.highlightedyank.enable": true,
+    "php.debug.ideKey": "VSCODE",
+    "php.validate.enable": true,
+    "php.validate.run": "onType",
+    "php.validate.executablePath": "/opt/homebrew/bin/php",
+    "php.suggest.basic": true,
+    "php-cs-fixer.executable": "/opt/homebrew/bin/php-cs-fixer",
+    "php-cs-fixer.onSave": true,
+    "breadcrumbs.filePath": "off",
+    "security.workspace.trust.untrustedFiles": "open",
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[dockercompose]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "files.exclude": {
+        "**/.git": false
+    },
+    "files.associations": {
+        "*.scpt": "oscript"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "redhat.telemetry.enabled": false,
+    "editor.stickyScroll.enabled": true,
+    "bladeFormatter.format.wrapAttributes": "force",
+    "workbench.editorAssociations": {
+        "*.pdf": "hexEditor.hexedit"
+    },
+    "editor.formatOnSaveMode": "file",
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit"
+    },
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": false,
+    "python.analysis.typeCheckingMode": "off",
+    "python.formatting.provider": "autopep8",
+    "[python]": {
+        "editor.formatOnType": true,
+        "editor.defaultFormatter": "ms-python.python"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "snyk.yesWelcomeNotification": false,
+    "snyk.advanced.cliPath": "",
+    "snyk.features.codeQuality": true,
+    "snyk.trustedFolders": [
+    ],
+    "snyk.advanced.autoScanOpenSourceSecurity": true,
+    "git.openRepositoryInParentFolders": "never",
+    "editor.fontSize": 12.5,
+    "explorer.confirmDelete": false,
+    "liveServer.settings.donotShowInfoMsg": true,
+}
