@@ -1,16 +1,11 @@
-
 # Change the whitespace settings value
 defaults -currentHost write -globalDomain NSStatusItemSelectionPadding -int 6
 defaults -currentHost write -globalDomain NSStatusItemSpacing -int 6
 
-# After running these commands, you need to log out and log back in
-# Revert to the original values
-#defaults -currentHost delete -globalDomain NSStatusItemSelectionPadding
-#defaults -currentHost delete -globalDomain NSStatusItemSpacing
-
 defaults write com.apple.mail DisableInlineAttachmentViewing -bool yes
 
 defaults write com.apple.screencapture type jpg
+mkdir ~/Desktop/screenshots
 defaults write com.apple.screencapture location ~/Desktop/screenshots
 
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
@@ -22,3 +17,7 @@ defaults write com.apple.Dock showhidden -bool TRUE && killall Dock
 
 killall Finder;
 killall Dock;
+
+# shortcuts with CH-FR keyboard
+defaults write -g NSUserKeyEquivalents -dict-add "Zoom In" "@$1"
+defaults write -g NSUserKeyEquivalents -dict-add "Zoom Out" "@$-"
