@@ -1,0 +1,42 @@
+[general]
+live_config_reload = true
+import = [
+    "~/.config/alacritty/themes/themes/iterm.toml"
+]
+
+[window]
+decorations = "Buttonless"
+title = "Terminal"
+padding = { x = 9, y = 9}
+
+[font]
+normal = { family = "SF Mono", style="Regular" }
+size=16
+
+[selection]
+save_to_clipboard = true
+
+[terminal]
+osc52 = "CopyPaste"
+
+[mouse]
+hide_when_typing = true
+
+[[hints.enabled]]
+command = "open"
+hyperlinks = true
+post_processing = true
+persist = false
+mouse.enabled = true
+mouse.mods = "Command"
+binding = { key = "O", mods = "Command" }
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\\u0000-\\u001F\\u007F-\\u009F<>\"\\s{-}\\^⟨⟩`\\\\]+"
+
+[keyboard]
+bindings = [
+    { key = "+", mods = "Command|Shift", action = "IncreaseFontSize"},
+    { key = "_", mods = "Command|Shift", action = "DecreaseFontSize"},
+    { key = "=", mods = "Command|Shift", action = "ResetFontSize"},
+    { key = "N", mods = "Command|Shift", action = "CreateNewWindow" },
+    { key = "T", mods = "Command|Shift", action = "CreateNewTab" },
+]
