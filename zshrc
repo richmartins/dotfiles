@@ -89,13 +89,10 @@ export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
-export NVM_DIR="$HOME/.nvm"
 
 export DOTNET_ROOT=/usr/local/share/dotnet
 export PATH=$PATH:/usr/local/share/dotnet
 
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
@@ -109,28 +106,9 @@ alias pip="pip3"
 alias tmuxn="tmux new -s ${tmux_session:-default}"
 alias tmuxa="tmux attach -t ${tmux_session:-default}"
 
-# Exports
-export PATH="/usr/local/opt/openjdk/bin:$PATH"
-export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
-export PATH="/Users/rtenorio/.cargo/bin:$PATH"
-export PATH="/Users/rtenorio/.cargo/bin:$PATH"
-export PATH="/opt/homebrew/Cellar/john-jumbo/1.9.0_1/bin:$PATH"
-
-export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig"
-export NVM_DIR="$HOME/.nvm"
-export HOMEBREW_GITHUB_API_TOKEN=
-export WPSCAN_API_TOKEN=
-
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 export TERM="xterm-256color"
 export GPG_TTY=$(tty)
-export LDFLAGS="-L/opt/homebrew/Cellar/unixodbc/2.3.11/lib"
-export CPPFLAGS="-I/opt/homebrew/Cellar/unixodbc/2.3.11/include"
-
-export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -155,7 +133,3 @@ function ruby_version()
         rbenv version | sed -e "s/ (set.*$//"
     fi
 }
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
