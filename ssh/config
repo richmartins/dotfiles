@@ -2,5 +2,5 @@
 # MUST HAVE
 Host *
     AddKeysToAgent yes
-    UseKeychain yes
+    UseKeychain yes # for macos only but this is sweeeeet
     IdentityFile ~/.ssh/theeeeeeKEYY
